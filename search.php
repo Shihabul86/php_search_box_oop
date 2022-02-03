@@ -1,11 +1,6 @@
 <?php  
      include_once 'Database.php';
      $db = new Database();
-    //search Data
-    if(isset($_POST['submit'])){
-        $search = $_POST['search'];
-        $tasks = $db->searchData($search);
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,6 +18,20 @@
     <br><br><br>
     <hr>
     <h1>Search Result</h1>
+    <?php  
+        //search Data
+        if(isset($_POST['submit'])){
+            $search = $_POST['search'];
+            $tasks = $db->searchData($search);
+            $sdata = count($tasks);
+            if( $sdata > 0){
+                $sdata;
+            }else{
+                echo 'data not found';
+            }
+        }
+    
+    ?>
 
     <?php
         foreach($tasks as $data):
